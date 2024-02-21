@@ -544,12 +544,33 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
 
+.relative {
+  position: relative;
+}
+
 .bottom-0 {
   bottom: 0px;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.block {
+  display: block;
 }
 
 .flex {
@@ -580,8 +601,16 @@ video {
   width: 100vw;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .justify-evenly {
   justify-content: space-evenly;
+}
+
+.self-end {
+  align-self: flex-end;
 }
 
 .border {
@@ -591,4 +620,28 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .md\:h-96 {
+    height: 24rem;
+  }
+
+  .md\:max-h-96 {
+    max-height: 24rem;
+  }
+
+  .md\:w-96 {
+    width: 24rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:h-96 {
+    height: 24rem;
+  }
+
+  .lg\:h-64 {
+    height: 16rem;
+  }
 }
