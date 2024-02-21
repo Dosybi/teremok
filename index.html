@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Теремок</title>
+  </head>
+  <body>
+    <div class="w-screen h-screen" id="game-container">
+      <div class="flex justify-evenly" id="ingredients">
+        <div class="border w-10 h-6 ingredient-portal"></div>
+        <div class="border w-10 h-6 ingredient-portal"></div>
+        <div class="border w-10 h-6 ingredient-portal"></div>
+        <div class="border w-10 h-6 ingredient-portal"></div>
+      </div>
+      <div
+        class="flex justify-evenly bottom-0 absolute w-full"
+        id="cook-positions"
+      >
+        <div class="w-10 h-10 text-4xl cook-position"></div>
+        <div class="w-10 h-10 text-4xl cook-position"></div>
+        <div class="w-10 h-10 text-4xl cook-position"></div>
+        <div class="w-10 h-10 text-4xl cook-position"></div>
+      </div>
+    </div>
+    <script type="module" src="/game.js"></script>
+  </body>
+</html>

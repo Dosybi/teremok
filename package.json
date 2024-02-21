@@ -1,0 +1,19 @@
+{
+  "name": "teremok",
+  "version": "1.0.0",
+  "description": "A browser-based game where the player catches falling ingredients to earn points.",
+  "main": "game.js",
+  "author": "Anton Dossybiyev",
+  "license": "ISC",
+  "scripts": {
+    "dev": "npx tailwindcss -i styles.css -o main.css --watch",
+    "build": "tailwindcss build styles.css -o main.css"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11"
+  }
+}
