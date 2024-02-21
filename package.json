@@ -6,8 +6,8 @@
   "author": "Anton Dossybiyev",
   "license": "ISC",
   "scripts": {
-    "dev": "npx tailwindcss -i styles.css -o main.css --watch",
-    "build": "tailwindcss build styles.css -o main.css"
+    "dev": "npx tailwindcss -i ./public/styles.css -o ./public/main.css --watch",
+    "build": "tailwindcss build -i ./public/styles.css -o ./public/main.css && npx vercel --prod --token=7Qp119OKBV5L8jzxIkX5nlRl"
   },
   "dependencies": {
     "tailwindcss": "^3.4.1"
