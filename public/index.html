@@ -9,14 +9,15 @@
   </head>
   <body>
     <div
-      class="relative w-screen h-screen md:h-96 my-auto border"
+      class="relative w-screen h-screen md:max-h-96 my-auto border"
       id="game-container"
     >
+      <div class="absolute top-0 left-0 text-xl font-bold" id="score"></div>
       <div class="flex justify-evenly" id="ingredients">
-        <div class="border w-10 h-6 ingredient-portal"></div>
-        <div class="border w-10 h-6 ingredient-portal"></div>
-        <div class="border w-10 h-6 ingredient-portal"></div>
-        <div class="border w-10 h-6 ingredient-portal"></div>
+        <div class="ingredient-portal"></div>
+        <div class="ingredient-portal"></div>
+        <div class="ingredient-portal"></div>
+        <div class="ingredient-portal"></div>
       </div>
       <div
         class="flex justify-evenly w-full bottom-0 absolute"
