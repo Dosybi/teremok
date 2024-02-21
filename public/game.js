@@ -17,25 +17,6 @@ let currentCookPosition = 2
 let score = 0
 let lives = 3
 
-// function createIngredient() {
-//   let ingedientHeight = 0
-//   const ingredientInitialPosition = Math.floor(Math.random() * 4)
-//   const ingredient = document.createElement('div')
-
-//   ingredient.style.position = 'absolute'
-//   ingredient.style.top = '0px'
-//   ingredient.innerText =
-//     ingredients[Math.floor(Math.random() * ingredients.length)]
-//   ingredient.className = 'ingredient'
-
-//   ingredientsPortals[ingredientInitialPosition].append(ingredient)
-
-//   setInterval(() => {
-//     ingedientHeight += 1
-//     ingredient.style.top = `${ingedientHeight}px`
-//   }, 20)
-// }
-
 function createIngredient() {
   let ingredientHeight = 0
   const ingredientInitialPosition = Math.floor(Math.random() * 4)
@@ -63,8 +44,8 @@ function createIngredient() {
     ) {
       clearInterval(fallInterval)
       ingredient.remove()
-      score += 1 // increase score
-      scoreContainer.innerText = score // update score display
+      score += 1
+      scoreContainer.innerText = score
     }
   }, ingredientFallSpeed)
 }
