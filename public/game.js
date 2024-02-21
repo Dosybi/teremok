@@ -48,16 +48,23 @@ function createIngredient() {
       scoreContainer.innerText = score
     }
   }, ingredientFallSpeed)
+
+  setTimeout(createIngredient, ingredientCreationInterval)
 }
 
 function increaseSpeed() {
-  ingredientFallSpeed -= 1 // increase speed
-  ingredientCreationInterval -= 100 // decrease interval
-  // if (ingredientFallSpeed < 5) ingredientFallSpeed = 5 // set a minimum speed
-  // if (ingredientCreationInterval < 500) ingredientCreationInterval = 500 // set a minimum interval
+  ingredientFallSpeed -= 1
+  ingredientCreationInterval -= 10
+  if (ingredientFallSpeed < 1) ingredientFallSpeed = 5
+  if (ingredientCreationInterval < 100) ingredientCreationInterval = 500
+  console.log('Speed:', ingredientFallSpeed)
+  console.log('Interval:', ingredientCreationInterval)
+}
 
-  console.log('ingredientCreationInterval', ingredientCreationInterval)
-  console.log('ingredientFallSpeed', ingredientFallSpeed)
+function createIngredientAndIncreaseSpeed() {
+  createIngredient()
+  increaseSpeed()
+  setTimeout(createIngredientAndIncreaseSpeed, ingredientCreationInterval)
 }
 
 function updateScoreAndLives() {}
@@ -91,10 +98,14 @@ function initGame() {
     }
   })
 
-  setInterval(() => {
-    createIngredient()
-    increaseSpeed()
-  }, ingredientCreationInterval)
+  // increaseSpeed()
+  // setTimeout(createIngredient, ingredientCreationInterval)
+  // createIngredientAndIncreaseSpeed()
+
+  // setInterval(() => {
+  //   createIngredient()
+  //   increaseSpeed()
+  // }, ingredientCreationInterval)
 }
 
 initGame()
