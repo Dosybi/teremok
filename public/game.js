@@ -3,19 +3,23 @@ const ingredientsPortals = document.querySelectorAll('.ingredient-portal')
 const cookPositions = document.querySelectorAll('.cook-position')
 const scoreContainer = document.getElementById('score')
 const livesContainer = document.getElementById('lives')
+const gameOverContainer = document.getElementById('game-over')
 
 const cook = createCook()
 
-const ingredients = ['🍅', '🥦', '🥕', '🌽', '🥔', '🍠', '🍆', '🥒', '🥬', '🥗']
-const badIngredients = ['👟', '⚽️', '🧽', '🎈', '🎫']
+const ingredients = ['🍅', '🌽', '🥔', '🥒', '🥬', '🍐', '🥑', '🍊', '🍉', '🍇']
+const badIngredients = ['👟', '⚽️', '🎈', '🧩', '🎱', '🥄', '📞']
+const live = '❤️'
+const badIngredientFrequency = 8
 
 let ingredientFallSpeed = 10
 let ingredientCreationInterval = 2000
 let currentCookPosition = 2
-let speedIncreaseThreshold = 5
+let speedIncreaseThreshold = 50
 
 let score = 0
 let lives = 3
+let isGameOver = false
 
 function createCook() {
   const cookElement = document.createElement('div')
@@ -23,13 +27,20 @@ function createCook() {
   return cookElement
 }
 function createIngredient() {
+  if (isGameOver) return
   const ingredientInitialPosition = Math.floor(Math.random() * 4)
   const ingredient = createIngredientElement()
+  let isBadIngredient = false
+
+  if (Math.floor(Math.random() * badIngredientFrequency) === 0) {
+    isBadIngredient = true
+    ingredient.innerText = getRandomBadIngredient()
+  }
 
   ingredientsPortals[ingredientInitialPosition].append(ingredient)
 
   const fallInterval = setInterval(() => {
-    moveIngredientDown(ingredient, fallInterval)
+    moveIngredientDown(ingredient, fallInterval, isBadIngredient)
   }, ingredientFallSpeed)
 
   setTimeout(createIngredient, ingredientCreationInterval)
@@ -38,6 +49,10 @@ function createIngredient() {
     increaseSpeed()
     speedIncreaseThreshold += 5
   }
+}
+
+function getRandomBadIngredient() {
+  return badIngredients[Math.floor(Math.random() * badIngredients.length)]
 }
 
 function createIngredientElement() {
@@ -53,13 +68,17 @@ function getRandomIngredient() {
   return ingredients[Math.floor(Math.random() * ingredients.length)]
 }
 
-function moveIngredientDown(ingredient, fallInterval) {
+function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
   const ingredientHeight = parseInt(ingredient.style.top) + 1
   ingredient.style.top = `${ingredientHeight}px`
 
   if (ingredientHeight >= gameContainer.offsetHeight) {
     clearInterval(fallInterval)
     ingredient.remove()
+
+    if (!isBadIngredient) {
+      loseLife()
+    }
   }
 
   if (
@@ -71,8 +90,23 @@ function moveIngredientDown(ingredient, fallInterval) {
   ) {
     clearInterval(fallInterval)
     ingredient.remove()
-    score += 1
+    if (isBadIngredient) {
+      score -= 10
+    } else {
+      score += 10
+    }
     updateScore()
+  }
+}
+
+function loseLife() {
+  lives -= 1
+  updateLives()
+
+  if (lives <= 0) {
+    isGameOver = true
+    gameOverContainer.classList.remove('hidden')
+  } else {
   }
 }
 
@@ -81,7 +115,10 @@ function updateScore() {
 }
 
 function updateLives() {
-  livesContainer.innerText = lives
+  livesContainer.innerHTML = ''
+  for (let i = 0; i < lives; i++) {
+    livesContainer.innerText += live
+  }
 }
 
 function increaseSpeed() {
@@ -90,9 +127,6 @@ function increaseSpeed() {
 
   ingredientFallSpeed = Math.max(ingredientFallSpeed, 1)
   ingredientCreationInterval = Math.max(ingredientCreationInterval, 400)
-
-  console.log('Speed:', ingredientFallSpeed)
-  console.log('Interval:', ingredientCreationInterval)
 }
 
 function handleArrowKey(event) {
