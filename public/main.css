@@ -564,6 +564,10 @@ video {
   top: 0px;
 }
 
+.right-0 {
+  right: 0px;
+}
+
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
