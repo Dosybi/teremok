@@ -140,7 +140,15 @@ function handleArrowKey(event) {
   }
 }
 
-function handleTouch(event) {}
+function handleTouch(event) {
+  event.preventDefault()
+
+  if (event.target === controlLeft) {
+    moveCookLeft()
+  } else if (event.target === controlRight) {
+    moveCookRight()
+  }
+}
 
 function moveCookLeft() {
   updateCookPosition(-1)
@@ -164,8 +172,8 @@ function initGame() {
   createIngredient()
 
   document.addEventListener('keydown', handleArrowKey)
-  controlLeft.addEventListener('touchstart', moveCookLeft)
-  controlRight.addEventListener('touchstart', moveCookRight)
+  controlLeft.addEventListener('touchstart', handleTouch)
+  controlRight.addEventListener('touchstart', handleTouch)
 }
 
 initGame()
