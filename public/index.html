@@ -18,11 +18,13 @@
       <img src="./assets/desktop-red.svg" alt="Теремок" class="mx-auto" />
     </div>
     <div class="flex items-center">
-      <div class="text-6xl" id="control-left"><</div>
-      <div class="relative my-auto h-80 w-5/6 mx-auto" id="game-container">
-        <div class="absolute top-0 right-0 text-4xl" id="score"></div>
-        <div class="absolute top-0 left-0 text-4xl" id="lives"></div>
-        <div class="text-6xl justify-center hidden" id="game-over">
+      <div class="text-6xl h-72 flex items-center" id="control-left">
+        <div><</div>
+      </div>
+      <div class="relative my-auto h-72 w-5/6 mx-auto" id="game-container">
+        <div class="absolute top-0 right-0 text-2xl" id="score"></div>
+        <div class="absolute top-0 left-0 text-2xl" id="lives"></div>
+        <div class="text-4xl justify-center hidden" id="game-over">
           <div>GAME OVER!</div>
         </div>
         <div class="flex justify-evenly text-4xl" id="ingredients">
@@ -35,13 +37,15 @@
           class="flex justify-evenly w-full bottom-0 absolute text-4xl"
           id="cook-positions"
         >
-          <div class="w-10 h-10 text-4xl cook-position"></div>
-          <div class="w-10 h-10 text-4xl cook-position"></div>
-          <div class="w-10 h-10 text-4xl cook-position"></div>
-          <div class="w-10 h-10 text-4xl cook-position"></div>
+          <div class="w-10 h-10 cook-position"></div>
+          <div class="w-10 h-10 cook-position"></div>
+          <div class="w-10 h-10 cook-position"></div>
+          <div class="w-10 h-10 cook-position"></div>
         </div>
       </div>
-      <div class="text-6xl" id="control-right">></div>
+      <div class="text-6xl h-72 flex items-center" id="control-right">
+        <div>></div>
+      </div>
     </div>
     <script type="module" src="game.js"></script>
   </body>
