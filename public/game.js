@@ -143,9 +143,9 @@ function handleArrowKey(event) {
 function handleTouch(event) {
   event.preventDefault()
 
-  if (event.target === controlLeft) {
+  if (event.target.closest('#control-left')) {
     moveCookLeft()
-  } else if (event.target === controlRight) {
+  } else if (event.target.closest('#control-right')) {
     moveCookRight()
   }
 }
