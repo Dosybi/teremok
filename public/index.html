@@ -3,35 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="main.css" />
     <title>Теремок</title>
   </head>
   <body>
-    <div
-      class="relative w-screen h-screen md:max-h-96 my-auto border"
-      id="game-container"
-    >
-      <div class="absolute top-0 right-0 text-xl font-bold" id="score"></div>
-      <div class="absolute top-0 left-0 text-xl font-bold" id="lives"></div>
-      <div class="absolute font-bold text-9xl hidden" id="game-over">
-        GAME OVER!
+    <div class="my-4">
+      <img src="./assets/desktop-red.svg" alt="Теремок" class="mx-auto" />
+    </div>
+    <div class="flex items-center">
+      <div class="text-6xl" id="control-left"><</div>
+      <div class="relative my-auto h-80 w-5/6 mx-auto" id="game-container">
+        <div class="absolute top-0 right-0 text-4xl" id="score"></div>
+        <div class="absolute top-0 left-0 text-4xl" id="lives"></div>
+        <div class="text-6xl justify-center hidden" id="game-over">
+          <div>GAME OVER!</div>
+        </div>
+        <div class="flex justify-evenly text-4xl" id="ingredients">
+          <div class="ingredient-portal"></div>
+          <div class="ingredient-portal"></div>
+          <div class="ingredient-portal"></div>
+          <div class="ingredient-portal"></div>
+        </div>
+        <div
+          class="flex justify-evenly w-full bottom-0 absolute text-4xl"
+          id="cook-positions"
+        >
+          <div class="w-10 h-10 text-4xl cook-position"></div>
+          <div class="w-10 h-10 text-4xl cook-position"></div>
+          <div class="w-10 h-10 text-4xl cook-position"></div>
+          <div class="w-10 h-10 text-4xl cook-position"></div>
+        </div>
       </div>
-      <div class="flex justify-evenly" id="ingredients">
-        <div class="ingredient-portal"></div>
-        <div class="ingredient-portal"></div>
-        <div class="ingredient-portal"></div>
-        <div class="ingredient-portal"></div>
-      </div>
-      <div
-        class="flex justify-evenly w-full bottom-0 absolute"
-        id="cook-positions"
-      >
-        <div class="w-10 h-10 text-4xl cook-position"></div>
-        <div class="w-10 h-10 text-4xl cook-position"></div>
-        <div class="w-10 h-10 text-4xl cook-position"></div>
-        <div class="w-10 h-10 text-4xl cook-position"></div>
-      </div>
+      <div class="text-6xl" id="control-right">></div>
     </div>
     <script type="module" src="game.js"></script>
   </body>

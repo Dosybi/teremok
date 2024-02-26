@@ -4,6 +4,8 @@ const cookPositions = document.querySelectorAll('.cook-position')
 const scoreContainer = document.getElementById('score')
 const livesContainer = document.getElementById('lives')
 const gameOverContainer = document.getElementById('game-over')
+const controlLeft = document.getElementById('control-left')
+const controlRight = document.getElementById('control-right')
 
 const cook = createCook()
 
@@ -106,6 +108,7 @@ function loseLife() {
   if (lives <= 0) {
     isGameOver = true
     gameOverContainer.classList.remove('hidden')
+    gameOverContainer.classList.add('flex')
   } else {
   }
 }
@@ -137,6 +140,8 @@ function handleArrowKey(event) {
   }
 }
 
+function handleTouch(event) {}
+
 function moveCookLeft() {
   updateCookPosition(-1)
 }
@@ -159,6 +164,8 @@ function initGame() {
   createIngredient()
 
   document.addEventListener('keydown', handleArrowKey)
+  controlLeft.addEventListener('touchstart', moveCookLeft)
+  controlRight.addEventListener('touchstart', moveCookRight)
 }
 
 initGame()
