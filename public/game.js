@@ -107,8 +107,9 @@ function loseLife() {
 
   if (lives <= 0) {
     isGameOver = true
+    gameOverContainer.innerHTML = `<h1>Game Over</h1><p>Your score: ${score}</p>`
     gameOverContainer.classList.remove('hidden')
-    gameOverContainer.classList.add('flex')
+    gameOverContainer.classList.add('flex flex-col items-center')
   } else {
   }
 }
