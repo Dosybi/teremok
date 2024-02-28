@@ -23,22 +23,7 @@ let score = 0
 let lives = 3
 let isGameOver = false
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Check if Fullscreen API is supported
-  if (document.documentElement.requestFullscreen) {
-    // Trigger fullscreen mode
-    document.documentElement.requestFullscreen()
-  } else if (document.documentElement.mozRequestFullScreen) {
-    // Firefox
-    document.documentElement.mozRequestFullScreen()
-  } else if (document.documentElement.webkitRequestFullscreen) {
-    // Chrome, Safari and Opera
-    document.documentElement.webkitRequestFullscreen()
-  } else if (document.documentElement.msRequestFullscreen) {
-    // IE/Edge
-    document.documentElement.msRequestFullscreen()
-  }
-})
+window.scrollTo(0, 1)
 
 function createCook() {
   const cookElement = document.createElement('div')
