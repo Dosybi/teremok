@@ -28,6 +28,7 @@ function createCook() {
   cookElement.innerHTML = '👩‍🍳'
   return cookElement
 }
+
 function createIngredient() {
   if (isGameOver) return
   const ingredientInitialPosition = Math.floor(Math.random() * 4)
@@ -105,11 +106,11 @@ function loseLife() {
   lives -= 1
   updateLives()
 
-  if (lives <= 0) {
+  if (lives === 0) {
     isGameOver = true
-    gameOverContainer.innerHTML = `<h1>Game Over</h1><p>Your score: ${score}</p>`
+    gameOverContainer.innerHTML = `<div class="mx-auto" style="width: fit-content"><div style="width: fit-content">Game Over</div><div style="width: fit-content">Your score: ${score}</div></div>`
     gameOverContainer.classList.remove('hidden')
-    gameOverContainer.classList.add('flex flex-col items-center')
+    gameOverContainer.classList.add('flex-col')
   } else {
   }
 }
