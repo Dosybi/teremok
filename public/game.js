@@ -39,6 +39,7 @@ let isGameOver = false
 //     document.documentElement.msRequestFullscreen()
 //   }
 // })
+window.navigator.standalone == true
 
 function createCook() {
   const cookElement = document.createElement('div')
