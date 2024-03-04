@@ -141,7 +141,7 @@ function loseLife() {
 }
 
 function updateScore() {
-  scoreContainer.innerText = `СЧЁТ: ${score}`
+  scoreContainer.innerText = score
 }
 
 function updateLives() {
