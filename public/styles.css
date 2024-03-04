@@ -13,3 +13,8 @@
   background-size: cover;
   background-color: #f5e9df;
 }
+
+#controls {
+  background-image: url('./assets/game/table.png');
+  background-size: cover;
+}
