@@ -18,12 +18,12 @@ const ingredients = [
   `<img src="./assets/game/items/mushroom.png" />`,
   `<img src="./assets/game/items/orange.png" />`,
   `<img src="./assets/game/items/salad.png" />`,
-  `<img src="./assets/game/items/salmon.png" />`,
+  `<img src="./assets/game/items/tuna.png" />`,
   `<img src="./assets/game/items/strawberry.png" />`,
 ]
 
 const badIngredients = [
-  `<img src="./assets/game/items/airmattress.png" />`,
+  `<img src="./assets/game/items/firext.png" />`,
   `<img src="./assets/game/items/basketball.png" />`,
   `<img src="./assets/game/items/calc.png" />`,
   `<img src="./assets/game/items/dice.png" />`,
@@ -49,7 +49,7 @@ let isGameOver = false
 
 function createCook() {
   const cookElement = document.createElement('div')
-  cookElement.innerHTML = `<img class="w-20" src="./assets/game/cook.png" />`
+  cookElement.innerHTML = `<img class="w-32" src="./assets/game/cook.png" />`
   return cookElement
 }
 
