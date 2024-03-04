@@ -675,6 +675,6 @@ video {
 
 #game-container {
   background-image: url('./assets/game/kitchen.png');
-  background-size: 100%;
+  background-size: contain;
   background-color: #f5e9df;
 }
