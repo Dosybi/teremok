@@ -4,6 +4,7 @@ const cookPositions = document.querySelectorAll('.cook-position')
 const scoreContainer = document.getElementById('score')
 const livesContainer = document.getElementById('lives')
 const gameOverContainer = document.getElementById('game-over')
+const controlsContainer = document.getElementById('controls')
 const controlLeft = document.getElementById('control-left')
 const controlRight = document.getElementById('control-right')
 const playButton = document.getElementById('play')
@@ -146,6 +147,7 @@ function loseLife() {
     gameContainer.style.backgroundPosition = 'top'
     cookPositions[currentCookPosition].innerHTML = ''
     livesContainer.remove()
+    controlsContainer.remove()
   } else {
   }
 }
