@@ -49,7 +49,7 @@ let isGameOver = false
 
 function createCook() {
   const cookElement = document.createElement('div')
-  cookElement.innerHTML = `<img class="w-32" src="./assets/game/cook.png" />`
+  cookElement.innerHTML = `<img style="width: 7rem" src="./assets/game/cook.png" />`
   return cookElement
 }
 
