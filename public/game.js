@@ -9,9 +9,33 @@ const controlRight = document.getElementById('control-right')
 
 const cook = createCook()
 
-const ingredients = ['🍅', '🌽', '🥔', '🥒', '🥬', '🍐', '🥑', '🍊', '🍉', '🍇']
-const badIngredients = ['👟', '⚽️', '🎈', '🧩', '🎱', '🥄', '📞']
-const live = '❤️'
+const ingredients = [
+  `<img src="./assets/game/items/banana.png" />`,
+  `<img src="./assets/game/items/cheese.png" />`,
+  `<img src="./assets/game/items/cherry.png" />`,
+  `<img src="./assets/game/items/chocolate.png" />`,
+  `<img src="./assets/game/items/meat.png" />`,
+  `<img src="./assets/game/items/mushroom.png" />`,
+  `<img src="./assets/game/items/orange.png" />`,
+  `<img src="./assets/game/items/salad.png" />`,
+  `<img src="./assets/game/items/salmon.png" />`,
+  `<img src="./assets/game/items/strawberry.png" />`,
+]
+
+const badIngredients = [
+  `<img src="./assets/game/items/airmattress.png" />`,
+  `<img src="./assets/game/items/basketball.png" />`,
+  `<img src="./assets/game/items/calc.png" />`,
+  `<img src="./assets/game/items/dice.png" />`,
+  `<img src="./assets/game/items/fircone.png" />`,
+  `<img src="./assets/game/items/guitar.png" />`,
+  `<img src="./assets/game/items/iron.png" />`,
+  `<img src="./assets/game/items/phone.png" />`,
+  `<img src="./assets/game/items/scoop.png" />`,
+  `<img src="./assets/game/items/teapot.png" />`,
+]
+
+const live = `<img src="./assets/game/heart.png" style="width: 30px" />`
 const badIngredientFrequency = 8
 
 let ingredientFallSpeed = 10
@@ -20,12 +44,12 @@ let currentCookPosition = 2
 let speedIncreaseThreshold = 50
 
 let score = 0
-let lives = 3
+let lives = 5
 let isGameOver = false
 
 function createCook() {
   const cookElement = document.createElement('div')
-  cookElement.innerHTML = '👩‍🍳'
+  cookElement.innerHTML = `<img class="w-20" src="./assets/game/cook.png" />`
   return cookElement
 }
 
@@ -37,7 +61,7 @@ function createIngredient() {
 
   if (Math.floor(Math.random() * badIngredientFrequency) === 0) {
     isBadIngredient = true
-    ingredient.innerText = getRandomBadIngredient()
+    ingredient.innerHTML = getRandomBadIngredient()
   }
 
   ingredientsPortals[ingredientInitialPosition].append(ingredient)
@@ -61,8 +85,9 @@ function getRandomBadIngredient() {
 function createIngredientElement() {
   const ingredient = document.createElement('div')
   ingredient.style.position = 'absolute'
+  ingredient.style.width = '40px'
   ingredient.style.top = '0px'
-  ingredient.innerText = getRandomIngredient()
+  ingredient.innerHTML = getRandomIngredient()
   ingredient.className = 'ingredient'
   return ingredient
 }
@@ -108,7 +133,7 @@ function loseLife() {
 
   if (lives === 0) {
     isGameOver = true
-    gameOverContainer.innerHTML = `<div class="mx-auto" style="width: fit-content"><div style="width: fit-content">Game Over</div><div style="width: fit-content">Your score: ${score}</div></div>`
+    // gameOverContainer.innerHTML = `<div class="mx-auto" style="width: fit-content"><div style="width: fit-content">Конец</div><div style="width: fit-content">Your score: ${score}</div></div>`
     gameOverContainer.classList.remove('hidden')
     gameOverContainer.classList.add('flex-col')
   } else {
@@ -116,13 +141,13 @@ function loseLife() {
 }
 
 function updateScore() {
-  scoreContainer.innerText = score
+  scoreContainer.innerText = `СЧЁТ: ${score}`
 }
 
 function updateLives() {
   livesContainer.innerHTML = ''
   for (let i = 0; i < lives; i++) {
-    livesContainer.innerText += live
+    livesContainer.innerHTML += live
   }
 }
 
@@ -145,9 +170,12 @@ function handleArrowKey(event) {
 function handleTouch(event) {
   event.preventDefault()
 
-  if (event.target.closest('#control-left')) {
+  if (event.target.closest('#control-left') && currentCookPosition > 0) {
     moveCookLeft()
-  } else if (event.target.closest('#control-right')) {
+  } else if (
+    event.target.closest('#control-right') &&
+    currentCookPosition < 3
+  ) {
     moveCookRight()
   }
 }

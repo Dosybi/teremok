@@ -5,6 +5,11 @@
 * {
   font-family: 'Montserrat', sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
   font-style: normal;
+}
+
+#game-container {
+  background-image: url('./assets/game/kitchen.png');
+  background-size: cover;
+  background-color: #f5e9df;
 }

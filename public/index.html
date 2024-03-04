@@ -15,35 +15,42 @@
     <title>Теремок</title>
   </head>
   <body>
-    <div class="my-4">
-      <img src="./assets/desktop-red.svg" alt="Теремок" class="mx-auto" />
-    </div>
-    <div class="flex items-center h-svh">
-      <div class="text-6xl h-72 flex items-center" id="control-left">
-        <div><</div>
-      </div>
-      <div class="relative my-auto h-72 w-5/6 mx-auto" id="game-container">
-        <div class="absolute top-0 right-0 text-2xl" id="score"></div>
-        <div class="absolute top-0 left-0 text-2xl" id="lives"></div>
+    <div class="flex flex-col h-svh">
+      <div class="relative w-full h-full" id="game-container">
+        <div class="absolute top-4 right-4 flex flex-col items-end gap-4">
+          <div class="flex gap-4" id="lives"></div>
+          <div class="text-4xl font-bold text-[#EF9C19]" id="score"></div>
+        </div>
         <div class="text-4xl hidden w-full" id="game-over"></div>
-        <div class="flex justify-evenly text-4xl" id="ingredients">
-          <div class="ingredient-portal"></div>
-          <div class="ingredient-portal"></div>
-          <div class="ingredient-portal"></div>
-          <div class="ingredient-portal"></div>
+        <div class="flex justify-evenly w-full" id="ingredients">
+          <div class="ingredient-portal flex justify-between"></div>
+          <div class="ingredient-portal flex justify-between"></div>
+          <div class="ingredient-portal flex justify-between"></div>
+          <div class="ingredient-portal flex justify-between"></div>
         </div>
         <div
-          class="flex justify-evenly w-full bottom-0 absolute text-4xl"
+          class="flex justify-evenly w-full bottom-0 absolute"
           id="cook-positions"
         >
-          <div class="w-10 h-10 cook-position"></div>
-          <div class="w-10 h-10 cook-position"></div>
-          <div class="w-10 h-10 cook-position"></div>
-          <div class="w-10 h-10 cook-position"></div>
+          <div class="cook-position flex justify-between"></div>
+          <div class="cook-position flex justify-between"></div>
+          <div class="cook-position flex justify-between"></div>
+          <div class="cook-position flex justify-between"></div>
         </div>
       </div>
-      <div class="text-6xl h-72 flex items-center" id="control-right">
-        <div>></div>
+      <img class="-mt-24 z-10" src="./assets/game/table.png" />
+      <div
+        class="flex justify-between items-center px-4 py-10 bg-[#F5E9DF] border-t-4 border-t-black"
+      >
+        <div class="w-20" id="control-left">
+          <img src="./assets/game/btn_left.png" />
+        </div>
+        <div>
+          <img src="./assets/logo.png" alt="Теремок" class="mx-auto w-32" />
+        </div>
+        <div class="w-20" id="control-right">
+          <img src="./assets/game/btn_right.png" />
+        </div>
       </div>
     </div>
     <script type="module" src="game.js"></script>
