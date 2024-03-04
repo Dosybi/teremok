@@ -16,5 +16,5 @@
 
 #controls {
   background-image: url('./assets/game/table.png');
-  background-size: cover;
+  background-size: 100%;
 }
