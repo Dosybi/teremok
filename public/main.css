@@ -617,6 +617,10 @@ video {
   align-items: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .justify-between {
   justify-content: space-between;
 }
@@ -675,6 +679,6 @@ video {
 
 #game-container {
   background-image: url('./assets/game/kitchen.png');
-  background-size: contain;
+  background-size: cover;
   background-color: #f5e9df;
 }
