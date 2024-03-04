@@ -17,11 +17,26 @@
   <body>
     <div class="flex flex-col h-svh bg-[#F5E9DF]">
       <div class="relative w-full h-full" id="game-container">
-        <div class="absolute top-4 right-4 flex flex-col items-end gap-4">
-          <div class="flex gap-4" id="lives"></div>
-          <div class="text-4xl font-bold text-[#EF9C19]" id="score"></div>
+        <div class="mt-4 mx-6 flex justify-between items-start">
+          <div id="info">
+            <img style="width: 10%" src="./assets/btn_rule.png" />
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="flex gap-4" id="lives"></div>
+            <div class="text-4xl font-bold text-[#EF9C19]" id="score"></div>
+          </div>
         </div>
-        <div class="text-4xl hidden w-full" id="game-over"></div>
+        <div class="text-4xl hidden w-full mt-40 py-4" id="game-over">
+          <img src="./assets/game/banner_gameover.png" />
+          <div class="-mt-4">
+            <img
+              class="mx-auto"
+              style="width: 30%"
+              src="./assets/btn_play.png"
+              id="play"
+            />
+          </div>
+        </div>
         <div class="flex justify-evenly w-full" id="ingredients">
           <div class="ingredient-portal flex justify-center w-[112px]"></div>
           <div class="ingredient-portal flex justify-center w-[112px]"></div>
@@ -38,7 +53,6 @@
           <div class="cook-position flex justify-center w-[112px]"></div>
         </div>
       </div>
-      <!-- <div> -->
       <img src="./assets/game/table.png" class="-mt-32 z-50" />
       <div class="bg-[#D0BAA5] min-h-10 z-20 border-b-black border-b-4"></div>
       <div class="z-10 h-36 px-4 bg-[#F5E9DF]" id="controls">
@@ -54,7 +68,6 @@
           </div>
         </div>
       </div>
-      <!-- </div> -->
     </div>
     <script type="module" src="game.js"></script>
   </body>

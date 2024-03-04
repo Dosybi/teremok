@@ -6,6 +6,8 @@ const livesContainer = document.getElementById('lives')
 const gameOverContainer = document.getElementById('game-over')
 const controlLeft = document.getElementById('control-left')
 const controlRight = document.getElementById('control-right')
+const playButton = document.getElementById('play')
+const infoButton = document.getElementById('info')
 
 const cook = createCook()
 
@@ -44,7 +46,7 @@ let currentCookPosition = 2
 let speedIncreaseThreshold = 50
 
 let score = 0
-let lives = 5
+let lives = 1
 let isGameOver = false
 
 function createCook() {
@@ -97,6 +99,11 @@ function getRandomIngredient() {
 }
 
 function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
+  if (isGameOver) {
+    clearInterval(fallInterval)
+    ingredient.remove()
+    return
+  }
   const ingredientHeight = parseInt(ingredient.style.top) + 1
   ingredient.style.top = `${ingredientHeight}px`
 
@@ -133,9 +140,12 @@ function loseLife() {
 
   if (lives === 0) {
     isGameOver = true
-    // gameOverContainer.innerHTML = `<div class="mx-auto" style="width: fit-content"><div style="width: fit-content">Конец</div><div style="width: fit-content">Your score: ${score}</div></div>`
     gameOverContainer.classList.remove('hidden')
     gameOverContainer.classList.add('flex-col')
+    gameContainer.style.backgroundImage = 'url(./assets/game/bg_gameover.png)'
+    gameContainer.style.backgroundPosition = 'top'
+    cookPositions[currentCookPosition].innerHTML = ''
+    livesContainer.remove()
   } else {
   }
 }
@@ -181,10 +191,12 @@ function handleTouch(event) {
 }
 
 function moveCookLeft() {
+  if (isGameOver) return
   updateCookPosition(-1)
 }
 
 function moveCookRight() {
+  if (isGameOver) return
   updateCookPosition(1)
 }
 
@@ -205,5 +217,9 @@ function initGame() {
   controlLeft.addEventListener('touchstart', handleTouch)
   controlRight.addEventListener('touchstart', handleTouch)
 }
+
+playButton.addEventListener('click', () => {
+  location.reload()
+})
 
 initGame()
