@@ -15,7 +15,7 @@
     <title>Теремок</title>
   </head>
   <body>
-    <div class="flex flex-col h-svh">
+    <div class="flex flex-col h-svh bg-[#F5E9DF]">
       <div class="relative w-full h-full" id="game-container">
         <div class="absolute top-4 right-4 flex flex-col items-end gap-4">
           <div class="flex gap-4" id="lives"></div>
@@ -38,21 +38,23 @@
           <div class="cook-position flex justify-center w-[112px]"></div>
         </div>
       </div>
-      <!-- <img class="-mt-24 z-10" src="./assets/game/table.png" /> -->
-      <div
-        class="flex justify-between items-center pt-20 px-6 -mt-32 z-10 h-72"
-        id="controls"
-      >
-        <div class="w-20" id="control-left">
-          <img src="./assets/game/btn_left.png" />
-        </div>
-        <div>
-          <img src="./assets/logo.png" alt="Теремок" class="mx-auto w-32" />
-        </div>
-        <div class="w-20" id="control-right">
-          <img src="./assets/game/btn_right.png" />
+      <!-- <div> -->
+      <img src="./assets/game/table.png" class="-mt-32 z-50" />
+      <div class="bg-[#D0BAA5] min-h-10 z-20 border-b-black border-b-4"></div>
+      <div class="z-10 h-52 px-4 bg-[#F5E9DF]" id="controls">
+        <div class="w-full flex justify-between items-center h-full">
+          <div class="w-20" id="control-left">
+            <img src="./assets/game/btn_left.png" />
+          </div>
+          <div>
+            <img src="./assets/logo.png" alt="Теремок" class="mx-auto w-40" />
+          </div>
+          <div class="w-20" id="control-right">
+            <img src="./assets/game/btn_right.png" />
+          </div>
         </div>
       </div>
+      <!-- </div> -->
     </div>
     <script type="module" src="game.js"></script>
   </body>
