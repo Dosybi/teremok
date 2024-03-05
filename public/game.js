@@ -251,6 +251,7 @@ function initGame() {
   lives = 5
   ingredientFallSpeed = 10
   ingredientCreationInterval = 2000
+  speedIncreaseThreshold = 50
   isGameOver = false
 
   playButton.src = './assets/btn_play.png'
