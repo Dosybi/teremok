@@ -176,7 +176,6 @@ function loseLife() {
     finalScore.innerText = `Счёт: ${score}`
     livesContainer.classList.add('hidden')
     controlsContainer.classList.add('hidden')
-  } else {
   }
 }
 
@@ -301,3 +300,8 @@ startButton.addEventListener('touchstart', () => {
     initGame()
   }, 500)
 })
+
+window.onblur = () => {
+  lives = 1
+  loseLife()
+}
