@@ -9,33 +9,34 @@ const controlLeft = document.getElementById('control-left')
 const controlRight = document.getElementById('control-right')
 const playButton = document.getElementById('play')
 const infoButton = document.getElementById('info')
+const finalScore = document.getElementById('final-score')
 
 const cook = createCook()
 
 const ingredients = [
-  `<img src="./assets/game/items/banana.png" />`,
-  `<img src="./assets/game/items/cheese.png" />`,
-  `<img src="./assets/game/items/cherry.png" />`,
-  `<img src="./assets/game/items/chocolate.png" />`,
-  `<img src="./assets/game/items/meat.png" />`,
-  `<img src="./assets/game/items/mushroom.png" />`,
-  `<img src="./assets/game/items/orange.png" />`,
-  `<img src="./assets/game/items/salad.png" />`,
-  `<img src="./assets/game/items/tuna.png" />`,
-  `<img src="./assets/game/items/strawberry.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/banana.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/strawberry.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/cheese.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/cherry.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/chocolate.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/meat.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/mushroom.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/orange.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/salad.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/tuna.png" />`,
 ]
 
 const badIngredients = [
-  `<img src="./assets/game/items/firext.png" />`,
-  `<img src="./assets/game/items/basketball.png" />`,
-  `<img src="./assets/game/items/calc.png" />`,
-  `<img src="./assets/game/items/dice.png" />`,
-  `<img src="./assets/game/items/fircone.png" />`,
-  `<img src="./assets/game/items/guitar.png" />`,
-  `<img src="./assets/game/items/iron.png" />`,
-  `<img src="./assets/game/items/phone.png" />`,
-  `<img src="./assets/game/items/scoop.png" />`,
-  `<img src="./assets/game/items/teapot.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/phone.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/dice.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/iron.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/guitar.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/calc.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/teapot.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/fircone.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/basketball.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/scoop.png" />`,
+  `<img style="position: relative; z-index: 100" src="./assets/game/items/firext.png" />`,
 ]
 
 const live = `<img src="./assets/game/heart.png" style="width: 30px" />`
@@ -47,7 +48,7 @@ let currentCookPosition = 2
 let speedIncreaseThreshold = 50
 
 let score = 0
-let lives = 1
+let lives = 5
 let isGameOver = false
 
 function createCook() {
@@ -81,10 +82,6 @@ function createIngredient() {
   }
 }
 
-function getRandomBadIngredient() {
-  return badIngredients[Math.floor(Math.random() * badIngredients.length)]
-}
-
 function createIngredientElement() {
   const ingredient = document.createElement('div')
   ingredient.style.position = 'absolute'
@@ -95,8 +92,32 @@ function createIngredientElement() {
   return ingredient
 }
 
+const getSliceCount = () => {
+  let sliceCount = 2
+  if (score >= 50 && score < 100) {
+    sliceCount = 4
+  } else if (score >= 100 && score < 150) {
+    sliceCount = 6
+  } else if (score >= 150 && score < 200) {
+    sliceCount = 8
+  } else if (score >= 200) {
+    sliceCount = 10
+  }
+  return sliceCount
+}
+
+function getRandomBadIngredient() {
+  const sliceCount = getSliceCount()
+  const badIngredientsSlice = badIngredients.slice(0, sliceCount)
+  return badIngredientsSlice[
+    Math.floor(Math.random() * badIngredientsSlice.length)
+  ]
+}
+
 function getRandomIngredient() {
-  return ingredients[Math.floor(Math.random() * ingredients.length)]
+  const sliceCount = getSliceCount()
+  const ingrediantsSlice = ingredients.slice(0, sliceCount)
+  return ingrediantsSlice[Math.floor(Math.random() * ingrediantsSlice.length)]
 }
 
 function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
@@ -127,7 +148,8 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
     clearInterval(fallInterval)
     ingredient.remove()
     if (isBadIngredient) {
-      score -= 10
+      loseLife()
+      // score -= 10
     } else {
       score += 10
     }
@@ -146,6 +168,8 @@ function loseLife() {
     gameContainer.style.backgroundImage = 'url(./assets/game/bg_gameover.png)'
     gameContainer.style.backgroundPosition = 'top'
     cookPositions[currentCookPosition].innerHTML = ''
+    scoreContainer.innerText = ''
+    finalScore.innerText = `Счёт: ${score}`
     livesContainer.remove()
     controlsContainer.remove()
   } else {
