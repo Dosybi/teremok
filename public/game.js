@@ -166,7 +166,7 @@ function loseLife() {
     gameOverContainer.classList.remove('hidden')
     gameOverContainer.classList.add('flex-col')
     gameContainer.style.backgroundImage = 'url(./assets/game/bg_gameover.png)'
-    gameContainer.style.backgroundPosition = 'top'
+    gameContainer.style.backgroundPosition = 'bottom'
     cookPositions[currentCookPosition].innerHTML = ''
     scoreContainer.innerText = ''
     finalScore.innerText = `Счёт: ${score}`
@@ -263,7 +263,7 @@ playButton.addEventListener('touchstart', () => {
 
   setTimeout(() => {
     gameContainer.style.backgroundImage = 'url(./assets/game/kitchen.png)'
-    gameContainer.style.backgroundPosition = 'top'
+    gameContainer.style.backgroundPosition = 'bottom'
     livesContainer.classList.remove('hidden')
     controlsContainer.classList.remove('hidden')
     startButton.classList.add('hidden')
@@ -273,7 +273,7 @@ playButton.addEventListener('touchstart', () => {
 })
 
 gameContainer.style.backgroundImage = 'url(./assets/game/bg_gameover.png)'
-gameContainer.style.backgroundPosition = 'top'
+gameContainer.style.backgroundPosition = 'bottom'
 livesContainer.classList.add('hidden')
 controlsContainer.classList.add('hidden')
 gameOverContainer.classList.add('hidden')
@@ -284,7 +284,7 @@ startButton.addEventListener('touchstart', () => {
 
   setTimeout(() => {
     gameContainer.style.backgroundImage = 'url(./assets/game/kitchen.png)'
-    gameContainer.style.backgroundPosition = 'top'
+    gameContainer.style.backgroundPosition = 'bottom'
     livesContainer.classList.remove('hidden')
     controlsContainer.classList.remove('hidden')
     startButton.classList.add('hidden')
@@ -292,5 +292,3 @@ startButton.addEventListener('touchstart', () => {
     initGame()
   }, 200)
 })
-
-// initGame()
