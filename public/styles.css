@@ -21,11 +21,5 @@ p {
   background-image: url('./assets/game/kitchen.png');
   background-size: cover;
   background-position: bottom;
-
   background-color: #f5e9df;
-}
-
-#controls {
-  /* background-image: url('./assets/game/table.png');
-  background-size: 100%; */
 }
