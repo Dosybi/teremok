@@ -10,6 +10,7 @@ const controlRight = document.getElementById('control-right')
 const playButton = document.getElementById('play')
 const infoButton = document.getElementById('info')
 const finalScore = document.getElementById('final-score')
+const startButton = document.getElementById('start')
 
 const cook = createCook()
 
@@ -139,7 +140,7 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
   }
 
   if (
-    ingredientHeight >= gameContainer.offsetHeight - cook.offsetHeight &&
+    ingredientHeight >= gameContainer.offsetHeight - cook.offsetHeight + 50 &&
     ingredient.offsetLeft >= cookPositions[currentCookPosition].offsetLeft &&
     ingredient.offsetLeft <=
       cookPositions[currentCookPosition].offsetLeft +
@@ -149,7 +150,6 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
     ingredient.remove()
     if (isBadIngredient) {
       loseLife()
-      // score -= 10
     } else {
       score += 10
     }
@@ -170,8 +170,8 @@ function loseLife() {
     cookPositions[currentCookPosition].innerHTML = ''
     scoreContainer.innerText = ''
     finalScore.innerText = `Счёт: ${score}`
-    livesContainer.remove()
-    controlsContainer.remove()
+    livesContainer.classList.add('hidden')
+    controlsContainer.classList.add('hidden')
   } else {
   }
 }
@@ -207,12 +207,22 @@ function handleTouch(event) {
   event.preventDefault()
 
   if (event.target.closest('#control-left') && currentCookPosition > 0) {
+    const button = controlLeft.children[0]
+    button.src = './assets/game/btn_left_active.png'
     moveCookLeft()
+    setTimeout(() => {
+      button.src = './assets/game/btn_left.png'
+    }, 200)
   } else if (
     event.target.closest('#control-right') &&
     currentCookPosition < 3
   ) {
+    const button = controlRight.children[0]
+    button.src = './assets/game/btn_right_active.png'
     moveCookRight()
+    setTimeout(() => {
+      button.src = './assets/game/btn_right.png'
+    }, 200)
   }
 }
 
@@ -233,6 +243,10 @@ function updateCookPosition(offset) {
 }
 
 function initGame() {
+  score = 0
+  lives = 5
+  isGameOver = false
+
   cookPositions[currentCookPosition].append(cook)
   updateScore()
   updateLives()
@@ -244,8 +258,39 @@ function initGame() {
   controlRight.addEventListener('touchstart', handleTouch)
 }
 
-playButton.addEventListener('click', () => {
-  location.reload()
+playButton.addEventListener('touchstart', () => {
+  playButton.src = './assets/btn_play_active.png'
+
+  setTimeout(() => {
+    gameContainer.style.backgroundImage = 'url(./assets/game/kitchen.png)'
+    gameContainer.style.backgroundPosition = 'top'
+    livesContainer.classList.remove('hidden')
+    controlsContainer.classList.remove('hidden')
+    startButton.classList.add('hidden')
+    gameOverContainer.classList.add('hidden')
+    initGame()
+  }, 300)
 })
 
-initGame()
+gameContainer.style.backgroundImage = 'url(./assets/game/bg_gameover.png)'
+gameContainer.style.backgroundPosition = 'top'
+livesContainer.classList.add('hidden')
+controlsContainer.classList.add('hidden')
+gameOverContainer.classList.add('hidden')
+startButton.classList.remove('hidden')
+
+startButton.addEventListener('touchstart', () => {
+  startButton.src = './assets/btn_play_active.png'
+
+  setTimeout(() => {
+    gameContainer.style.backgroundImage = 'url(./assets/game/kitchen.png)'
+    gameContainer.style.backgroundPosition = 'top'
+    livesContainer.classList.remove('hidden')
+    controlsContainer.classList.remove('hidden')
+    startButton.classList.add('hidden')
+    gameOverContainer.classList.add('hidden')
+    initGame()
+  }, 200)
+})
+
+// initGame()
