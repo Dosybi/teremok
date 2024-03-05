@@ -47,6 +47,8 @@ let ingredientFallSpeed = 10
 let ingredientCreationInterval = 2000
 let currentCookPosition = 2
 let speedIncreaseThreshold = 50
+const plateHeight = 50
+const maxCatchableHeight = 100
 
 let score = 0
 let lives = 5
@@ -140,7 +142,9 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
   }
 
   if (
-    ingredientHeight >= gameContainer.offsetHeight - cook.offsetHeight + 50 &&
+    ingredientHeight >=
+      gameContainer.offsetHeight - cook.offsetHeight + plateHeight &&
+    ingredientHeight < gameContainer.offsetHeight - maxCatchableHeight &&
     ingredient.offsetLeft >= cookPositions[currentCookPosition].offsetLeft &&
     ingredient.offsetLeft <=
       cookPositions[currentCookPosition].offsetLeft +
@@ -249,6 +253,8 @@ function initGame() {
   ingredientCreationInterval = 2000
   isGameOver = false
 
+  playButton.src = './assets/btn_play.png'
+
   cookPositions[currentCookPosition].append(cook)
   updateScore()
   updateLives()
@@ -271,7 +277,7 @@ playButton.addEventListener('touchstart', () => {
     startButton.classList.add('hidden')
     gameOverContainer.classList.add('hidden')
     initGame()
-  }, 300)
+  }, 500)
 })
 
 gameContainer.style.backgroundImage = 'url(./assets/game/bg_gameover.png)'
@@ -292,5 +298,5 @@ startButton.addEventListener('touchstart', () => {
     startButton.classList.add('hidden')
     gameOverContainer.classList.add('hidden')
     initGame()
-  }, 200)
+  }, 500)
 })
