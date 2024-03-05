@@ -14,29 +14,29 @@ const finalScore = document.getElementById('final-score')
 const cook = createCook()
 
 const ingredients = [
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/banana.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/strawberry.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/cheese.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/cherry.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/chocolate.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/meat.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/mushroom.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/orange.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/salad.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/tuna.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/banana.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/strawberry.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/cheese.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/cherry.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/chocolate.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/meat.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/mushroom.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/orange.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/salad.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/tuna.png" />`,
 ]
 
 const badIngredients = [
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/phone.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/dice.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/iron.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/guitar.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/calc.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/teapot.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/fircone.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/basketball.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/scoop.png" />`,
-  `<img style="position: relative; z-index: 100" src="./assets/game/items/firext.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/phone.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/dice.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/iron.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/guitar.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/calc.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/teapot.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/fircone.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/basketball.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/scoop.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/firext.png" />`,
 ]
 
 const live = `<img src="./assets/game/heart.png" style="width: 30px" />`

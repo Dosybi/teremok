@@ -568,6 +568,10 @@ video {
   z-index: 50;
 }
 
+.z-\[150\] {
+  z-index: 150;
+}
+
 .mx-6 {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
