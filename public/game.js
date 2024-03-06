@@ -12,6 +12,10 @@ const infoButton = document.getElementById('info')
 const finalScore = document.getElementById('final-score')
 const startButton = document.getElementById('start')
 
+const catchingSound = new Audio('./assets/sounds/pop.wav')
+const failSound = new Audio('./assets/sounds/fail.wav')
+const clickSound = new Audio('./assets/sounds/click.wav')
+
 const cook = createCook()
 
 const ingredients = [
@@ -42,13 +46,13 @@ const badIngredients = [
 
 const live = `<img src="./assets/game/heart.png" style="width: 30px" />`
 const badIngredientFrequency = 8
+const plateHeight = 50
+const maxCatchableHeight = 100
 
 let ingredientFallSpeed = 10
 let ingredientCreationInterval = 2000
 let currentCookPosition = 2
 let speedIncreaseThreshold = 50
-const plateHeight = 50
-const maxCatchableHeight = 100
 
 let score = 0
 let lives = 5
@@ -155,6 +159,7 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
     if (isBadIngredient) {
       loseLife()
     } else {
+      catchingSound.play()
       score += 10
     }
     updateScore()
@@ -162,6 +167,7 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
 }
 
 function loseLife() {
+  failSound.play()
   lives -= 1
   updateLives()
 
@@ -210,6 +216,7 @@ function handleTouch(event) {
   event.preventDefault()
 
   if (event.target.closest('#control-left') && currentCookPosition > 0) {
+    clickSound.cloneNode(true).play()
     const button = controlLeft.children[0]
     button.src = './assets/game/btn_left_active.png'
     moveCookLeft()
@@ -220,6 +227,7 @@ function handleTouch(event) {
     event.target.closest('#control-right') &&
     currentCookPosition < 3
   ) {
+    clickSound.cloneNode(true).play()
     const button = controlRight.children[0]
     button.src = './assets/game/btn_right_active.png'
     moveCookRight()
