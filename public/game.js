@@ -14,23 +14,62 @@ const startButton = document.getElementById('start')
 const muteButton = document.getElementById('mute')
 const volumeButton = document.getElementById('volume')
 
-const catchingSound = new Audio('./assets/sounds/pop.wav')
-const failSound = new Audio('./assets/sounds/fail.wav')
-const clickSound = new Audio('./assets/sounds/click.wav')
-const music = new Audio('./assets/sounds/music.wav')
+const catchingSound = new Howl({
+  src: ['./assets/sounds/pop.wav'],
+  onplayerror: function () {
+    catchingSound.once('unlock', function () {
+      catchingSound.play()
+    })
+  },
+})
 
-catchingSound.preload = 'auto'
-failSound.preload = 'auto'
-clickSound.preload = 'auto'
-music.preload = 'auto'
+const failSound = new Howl({
+  src: ['./assets/sounds/fail.wav'],
+  onplayerror: function () {
+    failSound.once('unlock', function () {
+      failSound.play()
+    })
+  },
+})
 
-catchingSound.load()
-failSound.load()
-clickSound.load()
-music.load()
+const clickSound = new Howl({
+  src: ['./assets/sounds/click.wav'],
+  onplayerror: function () {
+    clickSound.once('unlock', function () {
+      clickSound.play()
+    })
+  },
+})
 
-music.loop = true
-music.volume = 0.7
+const music = new Howl({
+  src: ['./assets/sounds/music.wav'],
+  loop: true,
+  volume: 0.7,
+  autoplay: true,
+  onplayerror: function () {
+    music.once('unlock', function () {
+      music.play()
+    })
+  },
+})
+
+// const catchingSound = new Audio('./assets/sounds/pop.wav')
+// const failSound = new Audio('./assets/sounds/fail.wav')
+// const clickSound = new Audio('./assets/sounds/click.wav')
+// const music = new Audio('./assets/sounds/music.wav')
+
+// catchingSound.preload = 'auto'
+// failSound.preload = 'auto'
+// clickSound.preload = 'auto'
+// music.preload = 'auto'
+
+// catchingSound.load()
+// failSound.load()
+// clickSound.load()
+// music.load()
+
+// music.loop = true
+// music.volume = 0.7
 
 const cook = createCook()
 
@@ -176,7 +215,7 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
     if (isBadIngredient) {
       loseLife()
     } else {
-      if (isSoundOn) catchingSound.cloneNode(true).play()
+      if (isSoundOn) catchingSound.play()
       score += 10
     }
     updateScore()
@@ -184,7 +223,7 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
 }
 
 function loseLife() {
-  if (isSoundOn) failSound.cloneNode(true).play()
+  if (isSoundOn) failSound.play()
   lives -= 1
   updateLives()
 
@@ -279,7 +318,7 @@ function initGame() {
   if (isSoundOn) {
     muteButton.classList.remove('hidden')
     volumeButton.classList.add('hidden')
-    music.play()
+    // music.play()
   }
 
   playButton.src = './assets/btn_play.png'
