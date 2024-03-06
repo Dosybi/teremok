@@ -143,18 +143,65 @@ function getRandomIngredient() {
   return ingrediantsSlice[Math.floor(Math.random() * ingrediantsSlice.length)]
 }
 
+// function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
+//   if (isGameOver) {
+//     clearInterval(fallInterval)
+//     ingredient.remove()
+//     return
+//   }
+//   const ingredientHeight = parseInt(ingredient.style.top) + 1
+//   ingredient.style.top = `${ingredientHeight}px`
+
+//   if (ingredientHeight >= gameContainer.offsetHeight) {
+//     clearInterval(fallInterval)
+//     ingredient.remove()
+
+//     if (!isBadIngredient) {
+//       loseLife()
+//     }
+//   }
+
+//   if (
+//     ingredientHeight >=
+//       gameContainer.offsetHeight - cook.offsetHeight + plateHeight &&
+//     ingredientHeight < gameContainer.offsetHeight - maxCatchableHeight &&
+//     ingredient.offsetLeft >= cookPositions[currentCookPosition].offsetLeft &&
+//     ingredient.offsetLeft <=
+//       cookPositions[currentCookPosition].offsetLeft +
+//         cookPositions[currentCookPosition].offsetWidth
+//   ) {
+//     clearInterval(fallInterval)
+//     ingredient.remove()
+//     if (isBadIngredient) {
+//       loseLife()
+//     } else {
+//       if (isSoundOn) catchingSound.cloneNode(true).play()
+//       score += 10
+//     }
+//     updateScore()
+//   }
+// }
+
 function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
+  const gameHeight = gameContainer.offsetHeight
+  const cookPosition = cookPositions[currentCookPosition]
+  const cookOffsetLeft = cookPosition.offsetLeft
+  const cookOffsetWidth = cookPosition.offsetWidth
+
   if (isGameOver) {
     clearInterval(fallInterval)
     ingredient.remove()
     return
   }
+
   const ingredientHeight = parseInt(ingredient.style.top) + 1
   ingredient.style.top = `${ingredientHeight}px`
 
-  if (ingredientHeight >= gameContainer.offsetHeight) {
+  let shouldRemoveIngredient = false
+
+  if (ingredientHeight >= gameHeight) {
     clearInterval(fallInterval)
-    ingredient.remove()
+    shouldRemoveIngredient = true
 
     if (!isBadIngredient) {
       loseLife()
@@ -162,16 +209,14 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
   }
 
   if (
-    ingredientHeight >=
-      gameContainer.offsetHeight - cook.offsetHeight + plateHeight &&
-    ingredientHeight < gameContainer.offsetHeight - maxCatchableHeight &&
-    ingredient.offsetLeft >= cookPositions[currentCookPosition].offsetLeft &&
-    ingredient.offsetLeft <=
-      cookPositions[currentCookPosition].offsetLeft +
-        cookPositions[currentCookPosition].offsetWidth
+    ingredientHeight >= gameHeight - cook.offsetHeight + plateHeight &&
+    ingredientHeight < gameHeight - maxCatchableHeight &&
+    ingredient.offsetLeft >= cookOffsetLeft &&
+    ingredient.offsetLeft <= cookOffsetLeft + cookOffsetWidth
   ) {
     clearInterval(fallInterval)
-    ingredient.remove()
+    shouldRemoveIngredient = true
+
     if (isBadIngredient) {
       loseLife()
     } else {
@@ -179,6 +224,10 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
       score += 10
     }
     updateScore()
+  }
+
+  if (shouldRemoveIngredient) {
+    ingredient.remove()
   }
 }
 
