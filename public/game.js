@@ -11,18 +11,25 @@ const playButton = document.getElementById('play')
 const infoButton = document.getElementById('info')
 const finalScore = document.getElementById('final-score')
 const startButton = document.getElementById('start')
+const muteButton = document.getElementById('mute')
+const volumeButton = document.getElementById('volume')
 
 const catchingSound = new Audio('./assets/sounds/pop.wav')
 const failSound = new Audio('./assets/sounds/fail.wav')
 const clickSound = new Audio('./assets/sounds/click.wav')
+const music = new Audio('./assets/sounds/music.wav')
 
 catchingSound.preload = 'auto'
 failSound.preload = 'auto'
 clickSound.preload = 'auto'
+music.preload = 'auto'
 
 catchingSound.load()
 failSound.load()
 clickSound.load()
+music.load()
+
+music.loop = true
 
 const cook = createCook()
 
@@ -57,6 +64,7 @@ const badIngredientFrequency = 8
 const plateHeight = 50
 const maxCatchableHeight = 100
 
+let isSoundOn = true
 let ingredientFallSpeed = 10
 let ingredientCreationInterval = 2000
 let currentCookPosition = 2
@@ -167,7 +175,7 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
     if (isBadIngredient) {
       loseLife()
     } else {
-      catchingSound.play()
+      if (isSoundOn) catchingSound.cloneNode(true).play()
       score += 10
     }
     updateScore()
@@ -175,7 +183,7 @@ function moveIngredientDown(ingredient, fallInterval, isBadIngredient) {
 }
 
 function loseLife() {
-  failSound.play()
+  if (isSoundOn) failSound.cloneNode(true).play()
   lives -= 1
   updateLives()
 
@@ -224,7 +232,6 @@ function handleTouch(event) {
   event.preventDefault()
 
   if (event.target.closest('#control-left') && currentCookPosition > 0) {
-    clickSound.cloneNode(true).play()
     const button = controlLeft.children[0]
     button.src = './assets/game/btn_left_active.png'
     moveCookLeft()
@@ -235,7 +242,6 @@ function handleTouch(event) {
     event.target.closest('#control-right') &&
     currentCookPosition < 3
   ) {
-    clickSound.cloneNode(true).play()
     const button = controlRight.children[0]
     button.src = './assets/game/btn_right_active.png'
     moveCookRight()
@@ -269,6 +275,12 @@ function initGame() {
   speedIncreaseThreshold = 50
   isGameOver = false
 
+  if (isSoundOn) {
+    muteButton.classList.remove('hidden')
+    volumeButton.classList.add('hidden')
+    music.play()
+  }
+
   playButton.src = './assets/btn_play.png'
 
   cookPositions[currentCookPosition].append(cook)
@@ -283,6 +295,7 @@ function initGame() {
 }
 
 playButton.addEventListener('touchstart', () => {
+  if (isSoundOn) clickSound.play()
   playButton.src = './assets/btn_play_active.png'
 
   setTimeout(() => {
@@ -305,6 +318,7 @@ startButton.classList.remove('hidden')
 
 startButton.addEventListener('touchstart', () => {
   startButton.src = './assets/btn_play_active.png'
+  if (isSoundOn) clickSound.play()
 
   setTimeout(() => {
     gameContainer.style.backgroundImage = 'url(./assets/game/kitchen.png)'
@@ -317,7 +331,23 @@ startButton.addEventListener('touchstart', () => {
   }, 500)
 })
 
+muteButton.addEventListener('touchstart', () => {
+  isSoundOn = false
+  music.pause()
+  muteButton.classList.add('hidden')
+  volumeButton.classList.remove('hidden')
+})
+
+volumeButton.addEventListener('touchstart', () => {
+  isSoundOn = true
+  music.play()
+  muteButton.classList.remove('hidden')
+  volumeButton.classList.add('hidden')
+})
+
 window.onblur = () => {
-  lives = 1
-  loseLife()
+  if (!isGameOver) {
+    lives = 1
+    loseLife()
+  }
 }
