@@ -24,12 +24,13 @@ failSound.preload = 'auto'
 clickSound.preload = 'auto'
 music.preload = 'auto'
 
-catchingSound.load()
-failSound.load()
-clickSound.load()
-music.load()
+// catchingSound.load()
+// failSound.load()
+// clickSound.load()
+// music.load()
 
 music.loop = true
+music.volume = 0.7
 
 const cook = createCook()
 
@@ -317,6 +318,11 @@ function updateCookPosition(offset) {
 }
 
 function initGame() {
+  catchingSound.load()
+  failSound.load()
+  clickSound.load()
+  music.load()
+
   score = 0
   lives = 5
   ingredientFallSpeed = 10
