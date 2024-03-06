@@ -16,6 +16,14 @@ const catchingSound = new Audio('./assets/sounds/pop.wav')
 const failSound = new Audio('./assets/sounds/fail.wav')
 const clickSound = new Audio('./assets/sounds/click.wav')
 
+catchingSound.preload = 'auto'
+failSound.preload = 'auto'
+clickSound.preload = 'auto'
+
+catchingSound.load()
+failSound.load()
+clickSound.load()
+
 const cook = createCook()
 
 const ingredients = [
