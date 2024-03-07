@@ -294,7 +294,7 @@ function updateCookPosition(offset) {
 
 function initGame() {
   score = 0
-  lives = 1
+  lives = 5
   ingredientFallSpeed = 10
   ingredientCreationInterval = 2000
   speedIncreaseThreshold = 50
