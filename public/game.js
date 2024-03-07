@@ -222,6 +222,7 @@ function loseLife() {
     finalScore.innerHTML = `<div class="text-4xl">Счёт</div><div style="font-size: 3.75rem">${score}</div>`
     livesContainer.classList.add('hidden')
     controlsContainer.classList.add('hidden')
+    startButton.classList.add('hidden')
   }
 }
 
