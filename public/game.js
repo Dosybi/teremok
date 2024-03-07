@@ -219,7 +219,7 @@ function loseLife() {
     gameContainer.style.backgroundPosition = 'bottom'
     cookPositions[currentCookPosition].innerHTML = ''
     scoreContainer.innerText = ''
-    finalScore.innerHTML = `<div class="text-4xl">Счёт</div><div class="text-6xl">${score}</div>`
+    finalScore.innerHTML = `<div class="text-4xl">Счёт</div><div style="font-size: 3.75rem">${score}</div>`
     livesContainer.classList.add('hidden')
     controlsContainer.classList.add('hidden')
   }
