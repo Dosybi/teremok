@@ -82,7 +82,7 @@ const badIngredients = [
   `<img style="position: relative; z-index: 40" src="./assets/game/items/firext.png" />`,
 ]
 
-const knowMoreLink = 'https://www.instagram.com/'
+const knowMoreLink = 'https://teremok.spb.ru'
 const live = `<img src="./assets/game/heart.png" style="width: 30px" />`
 const badIngredientFrequency = 8
 const plateHeight = 50
