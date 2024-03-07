@@ -43,7 +43,7 @@ const clickSound = new Howl({
 })
 
 const music = new Howl({
-  src: ['./assets/sounds/music.wav'],
+  src: ['./assets/sounds/music.mp3'],
   loop: true,
   volume: 0.7,
   autoplay: true,
