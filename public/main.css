@@ -727,6 +727,10 @@ video {
   background-color: rgb(255 255 255 / 0.5);
 }
 
+.bg-white\/70 {
+  background-color: rgb(255 255 255 / 0.7);
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
