@@ -13,6 +13,7 @@ const finalScore = document.getElementById('final-score')
 const startButton = document.getElementById('start')
 const muteButton = document.getElementById('mute')
 const volumeButton = document.getElementById('volume')
+const knowMoreButton = document.getElementById('more')
 
 const catchingSound = new Howl({
   src: ['./assets/sounds/pop.wav'],
@@ -53,24 +54,6 @@ const music = new Howl({
   },
 })
 
-// const catchingSound = new Audio('./assets/sounds/pop.wav')
-// const failSound = new Audio('./assets/sounds/fail.wav')
-// const clickSound = new Audio('./assets/sounds/click.wav')
-// const music = new Audio('./assets/sounds/music.wav')
-
-// catchingSound.preload = 'auto'
-// failSound.preload = 'auto'
-// clickSound.preload = 'auto'
-// music.preload = 'auto'
-
-// catchingSound.load()
-// failSound.load()
-// clickSound.load()
-// music.load()
-
-// music.loop = true
-// music.volume = 0.7
-
 const cook = createCook()
 
 const ingredients = [
@@ -99,6 +82,7 @@ const badIngredients = [
   `<img style="position: relative; z-index: 40" src="./assets/game/items/firext.png" />`,
 ]
 
+const knowMoreLink = 'https://www.instagram.com/'
 const live = `<img src="./assets/game/heart.png" style="width: 30px" />`
 const badIngredientFrequency = 8
 const plateHeight = 50
@@ -235,7 +219,8 @@ function loseLife() {
     gameContainer.style.backgroundPosition = 'bottom'
     cookPositions[currentCookPosition].innerHTML = ''
     scoreContainer.innerText = ''
-    finalScore.innerText = `Счёт: ${score}`
+    // finalScore.innerText = `Счёт:\n${score}`
+    finalScore.innerHTML = `<div class="text-4xl">Счёт</div><div class="text-6xl">${score}</div>`
     livesContainer.classList.add('hidden')
     controlsContainer.classList.add('hidden')
   }
@@ -309,7 +294,7 @@ function updateCookPosition(offset) {
 
 function initGame() {
   score = 0
-  lives = 5
+  lives = 1
   ingredientFallSpeed = 10
   ingredientCreationInterval = 2000
   speedIncreaseThreshold = 50
@@ -318,10 +303,9 @@ function initGame() {
   if (isSoundOn) {
     muteButton.classList.remove('hidden')
     volumeButton.classList.add('hidden')
-    // music.play()
   }
 
-  playButton.src = './assets/btn_play.png'
+  playButton.src = './assets/btn_reload.png'
 
   cookPositions[currentCookPosition].append(cook)
   updateScore()
@@ -336,7 +320,7 @@ function initGame() {
 
 playButton.addEventListener('touchstart', () => {
   if (isSoundOn) clickSound.play()
-  playButton.src = './assets/btn_play_active.png'
+  playButton.src = './assets/btn_reload_active.png'
 
   setTimeout(() => {
     gameContainer.style.backgroundImage = 'url(./assets/game/kitchen.png)'
@@ -383,6 +367,10 @@ volumeButton.addEventListener('touchstart', () => {
   music.play()
   muteButton.classList.remove('hidden')
   volumeButton.classList.add('hidden')
+})
+
+knowMoreButton.addEventListener('touchstart', () => {
+  window.open(knowMoreLink)
 })
 
 window.onblur = () => {
