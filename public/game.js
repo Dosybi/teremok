@@ -14,6 +14,7 @@ const startButton = document.getElementById('start')
 const muteButton = document.getElementById('mute')
 const volumeButton = document.getElementById('volume')
 const knowMoreButton = document.getElementById('more')
+const gameOverText = document.getElementById('game-over-text')
 
 const catchingSound = new Howl({
   src: ['./assets/sounds/pop.wav'],
@@ -54,6 +55,8 @@ const music = new Howl({
   },
 })
 
+const record = localStorage.getItem('teremokRecord') || 0
+
 const cook = createCook()
 
 const ingredients = [
@@ -66,7 +69,7 @@ const ingredients = [
   `<img style="position: relative; z-index: 40" src="./assets/game/items/mushroom.png" />`,
   `<img style="position: relative; z-index: 40" src="./assets/game/items/orange.png" />`,
   `<img style="position: relative; z-index: 40" src="./assets/game/items/salad.png" />`,
-  `<img style="position: relative; z-index: 40" src="./assets/game/items/tuna.png" />`,
+  `<img style="position: relaive; z-index: 40" src="./assets/game/items/tuna.png" />`,
 ]
 
 const badIngredients = [
@@ -84,6 +87,7 @@ const badIngredients = [
 
 const knowMoreLink = 'https://teremok.spb.ru'
 const live = `<img src="./assets/game/heart.png" style="width: 30px" />`
+
 const badIngredientFrequency = 8
 const plateHeight = 50
 const maxCatchableHeight = 100
@@ -97,6 +101,20 @@ let speedIncreaseThreshold = 50
 let score = 0
 let lives = 5
 let isGameOver = false
+
+function checkRecord() {
+  const record = localStorage.getItem('teremokRecord') || 0
+
+  if (record > score) {
+    gameOverText.childNodes[1].innerText = `Отличный результат! Твой рекорд: ${record}`
+    return
+  }
+
+  localStorage.setItem('teremokRecord', score)
+  gameOverText.childNodes[1].innerText = `Твой новый рекорд!`
+  gameOverText.childNodes[3].innerText = `Не останавливайся на достигнутом — узнай секреты Мастера-Блинопёка!`
+  return score
+}
 
 function createCook() {
   const cookElement = document.createElement('div')
@@ -223,6 +241,7 @@ function loseLife() {
     livesContainer.classList.add('hidden')
     controlsContainer.classList.add('hidden')
     startButton.classList.add('hidden')
+    checkRecord()
   }
 }
 
