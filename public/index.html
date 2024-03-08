@@ -48,11 +48,7 @@
             <div class="text-4xl text-[#EF9C19]" id="score"></div>
           </div>
         </div>
-        <div
-          class="hidden w-full mt-6 py-4 px-4"
-          style="z-index: 100"
-          id="game-over"
-        >
+        <div class="hidden w-full mt-6 py-4 px-4" id="game-over">
           <div
             class="flex justify-center flex-col items-center text-[#EF9C19]"
             id="final-score"
@@ -108,7 +104,10 @@
           <div class="cook-position flex justify-center w-[112px]"></div>
         </div>
       </div>
-      <img src="./assets/game/table.png" class="-mt-32 z-50" />
+      <img
+        src="./assets/game/table.png"
+        class="-mt-32 z-50 pointer-events-none"
+      />
       <div class="bg-[#D0BAA5] min-h-10 z-50 border-b-black border-b-4"></div>
       <div class="z-50 h-36 px-4 bg-[#F5E9DF]" id="controls">
         <div class="w-full flex justify-between items-center h-full">
