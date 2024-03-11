@@ -79,9 +79,9 @@ const badIngredients = [
   `<img style="position: relative; z-index: 40" src="./assets/game/items/guitar.png" />`,
   `<img style="position: relative; z-index: 40" src="./assets/game/items/calc.png" />`,
   `<img style="position: relative; z-index: 40" src="./assets/game/items/teapot.png" />`,
-  `<img style="position: relative; z-index: 40" src="./assets/game/items/fircone.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/backpack.png" />`,
   `<img style="position: relative; z-index: 40" src="./assets/game/items/basketball.png" />`,
-  `<img style="position: relative; z-index: 40" src="./assets/game/items/scoop.png" />`,
+  `<img style="position: relative; z-index: 40" src="./assets/game/items/rocket.png" />`,
   `<img style="position: relative; z-index: 40" src="./assets/game/items/firext.png" />`,
 ]
 
