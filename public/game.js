@@ -85,7 +85,8 @@ const badIngredients = [
   `<img style="position: relative; z-index: 40" src="./assets/game/items/firext.png" />`,
 ]
 
-const knowMoreLink = 'https://teremok.spb.ru'
+const knowMoreLink =
+  'https://teremok.spb.ru/?utm_source=ivent&utm_medium=link_to_site'
 const live = `<img src="./assets/game/heart.png" style="width: 30px" />`
 
 const badIngredientFrequency = 8
