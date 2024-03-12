@@ -23,3 +23,8 @@ p {
   background-position: bottom;
   background-color: #f5e9df;
 }
+
+.game-over-controls {
+  position: relative;
+  z-index: 100;
+}

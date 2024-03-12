@@ -389,7 +389,7 @@ volumeButton.addEventListener('touchstart', () => {
   volumeButton.classList.add('hidden')
 })
 
-knowMoreButton.addEventListener('touchstart', () => {
+knowMoreButton.addEventListener('click', () => {
   window.open(knowMoreLink)
 })
 
